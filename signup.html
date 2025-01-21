@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+            <li><a href="support.html">Support</a></li>
+            <li><a href="#">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <div class="login-container">
+        <form id="signup-form">
+            <label for="firstname"><b>FIRST NAME:</b></label><br>
+            <input type="text" id="firstname" name="firstname" placeholder="firstname"><br><br>
+
+            <label for="lastname"><b>LAST NAME:</b></label><br>
+            <input type="text" id="lastname" name="lastname" placeholder="Lastname"><br><br>
+
+            <label for="gender"><b>GENDER</b>:</label><br>
+            <input type="radio" name="gender" id="male" value="male"> <label for="male">Male</label>
+            <input type="radio" name="gender" id="female" value="female"> <label for="female">Female</label><br><br>
+
+            <label for="role"><b>Select Your Role in the Hospital</b></label><br>
+            <select name="role" id="role">
+                <option value="">Select Your Role</option>
+                <option value="surgeon">Surgeon</option>
+                <option value="nurse">Nurse</option>
+                <option value="physician">Physician</option>
+                <option value="anesthesiologist">Anesthesiologist</option>
+                <option value="radiologist">Radiologist</option>
+                <option value="lab_technician">Laboratory Technician</option>
+                <option value="pharmacist">Pharmacist</option>
+            </select><br><br>
+
+            <label for="city">Select Your City</label><br>
+            <select name="city" id="city">
+                <option value="">Select Your Favourite City</option>
+                <option value="nairobi">Nairobi</option>
+                <option value="mombasa">Mombasa</option>
+                <option value="nakuru">Nakuru</option>
+                <option value="eldoret">Eldoret</option>
+                <option value="kisumu">Kisumu</option>
+                <option value="kampala">Kampala</option>
+            </select><br><br>
+
+            <button class="btn btn-chasing" type="submit">Click Me</button>
+        </form>
+    </div>
+
+    <script>
+        const button = document.querySelector('.btn-chasing');
+        const form = document.getElementById('signup-form');
+
+        // Function to randomly move the button
+        function moveButton() {
+            const container = button.parentElement.getBoundingClientRect();
+            const buttonWidth = button.offsetWidth;
+            const buttonHeight = button.offsetHeight;
+
+            const maxLeft = container.width - buttonWidth;
+            const maxTop = container.height - buttonHeight;
+
+            const randomX = Math.random() * maxLeft;
+            const randomY = Math.random() * maxTop;
+
+            button.style.left = `${randomX}px`;
+            button.style.top = `${randomY}px`;
+        }
+
+        // Continuously move the button when hovering over it
+        button.addEventListener('mouseover', () => {
+            // Start moving the button every 100 milliseconds
+            button.moveInterval = setInterval(moveButton, 100);
+        });
+
+        // Stop moving the button when the mouse leaves
+        button.addEventListener('mouseleave', () => {
+            clearInterval(button.moveInterval);
+        });
+
+        // Form submit handling (showing "You think you're clever!" if form is incomplete)
+        form.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent form submission
+
+            // Validate form fields
+            const firstname = document.getElementById('firstname').value;
+            const lastname = document.getElementById('lastname').value;
+            const role = document.getElementById('role').value;
+            const city = document.getElementById('city').value;
+
+            if (!firstname || !lastname || !role || !city) {
+                // Display the "You think you're clever!" message
+                button.innerHTML = "You think you're clever!";
+                button.classList.add('btn-escape');
+
+                // Make the button rapidly move up and down
+                let moveUp = true;
+                let moveInterval = setInterval(() => {
+                    const currentTop = parseFloat(button.style.top) || 0;
+                    button.style.top = moveUp ? `${currentTop - 10}px` : `${currentTop + 10}px`;
+                    moveUp = !moveUp;
+                }, 50);
+
+                // Reload page after 2 seconds
+                setTimeout(() => {
+                    clearInterval(moveInterval);
+                    location.reload();
+                }, 2000);
+            }
+        });
+    </script>
+
+</body>
+</html>
