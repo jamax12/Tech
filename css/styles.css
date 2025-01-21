@@ -40,6 +40,85 @@ nav ul li a:hover {
     color: #FFFFFF;
 }
 
+.one {
+    background-color: #444444;
+    height: 140px;
+    width: 40%;
+    color: #BADA55;
+    font-size: 24px;
+    padding: 20px 0;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.two {
+    background-color: #333333;
+    height: 100px;
+    width: 40%;
+    color: #FF6347;
+    font-size: 22px;
+    padding: 20px 0;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.three {
+    background-color: #1e1e1e;
+    height: 100px;
+    width: 40%;
+    color: #32CD32;
+    font-size: 26px;
+    padding: 20px 0;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#four {
+    background-color: #000000;
+    color: #00FF00;
+    height: 100px;
+    width: 40%;
+    font-size: 28px;
+    padding: 20px 0;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#five {
+    background-color: #8B0000;
+    color: #FFD700;
+    height: 100px;
+    width: 40%;
+    font-size: 30px;
+    padding: 20px 0;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.image-horizontal {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 50px;
+
+}
+
+.image-one img, .image-two img, .image-three img, .image-four img {
+    height: 50vh;
+    width: 400px;
+}
+
+
 .login-container {
     position: absolute;
     top: 50%;
